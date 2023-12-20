@@ -17,8 +17,8 @@ jobs:
           architecture: x64
       - name: Install Poetry and dependencies
         run: |
-          pip install poetry --no-root
-          poetry install
+          pip install poetry
+          poetry install --no-root
       - name: Install mypy
         run: pip install mypy
       - name: Run mypy
