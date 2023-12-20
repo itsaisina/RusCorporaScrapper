@@ -1,0 +1,5 @@
+.venv
+.idea
+chromedriver.exe
+poetry.lock
+.pytest_cache
