@@ -2,4 +2,7 @@
 name = "ruscorpora-scraping-project"
 version = "0.1.1"
 description = "Проект для веб-скрапинга RusCorpora"
-dependencies = ["selenium==4.16.0"]
+dependencies = [
+    "selenium==4.16.0",
+    "pytest==7.4.3"
+]
