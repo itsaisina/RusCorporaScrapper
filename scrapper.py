@@ -1,5 +1,11 @@
+"""
+Module for web scraping using Selenium WebDriver.
+"""
+
 import time
 from typing import Tuple, List, Optional, Dict, Any
+
+from selenium.common import NoSuchElementException, TimeoutException, WebDriverException
 from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -32,8 +38,11 @@ class Scrapper:
         """
         Navigates to the initial search URL as defined in the configuration.
         """
-        self.driver.get(self.config["seed_url"])
-        time.sleep(2)  # sleep to ensure the page has loaded
+        try:
+            self.driver.get(self.config["seed_url"])
+            time.sleep(2)  # sleep to ensure the page has loaded
+        except WebDriverException as e:
+            print(f"Error navigating to search page: {e}")
 
     def input_word(self, word: str):
         """
@@ -50,7 +59,7 @@ class Scrapper:
             search_button = self.driver.find_element(
                 By.XPATH, self.config["x_paths"]["search_input"])
             search_button.click()
-        except Exception as e:
+        except (NoSuchElementException, TimeoutException, WebDriverException) as e:
             print(f"Error in input_word: {e}")
 
     def collect_data(self, word: str) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]]]:
@@ -81,7 +90,7 @@ class Scrapper:
                 if not self.go_to_next_page():
                     break
                 page_number += 1
-            except Exception as e:
+            except (NoSuchElementException, TimeoutException, WebDriverException) as e:
                 print(f"Error on page {page_number} for '{word}': {e}")
                 break
         return perfective, imperfective
@@ -116,7 +125,7 @@ class Scrapper:
                 'грамматика': grammar,
                 'синтаксические признаки': syntax_features
             }
-        except Exception as e:
+        except (NoSuchElementException, TimeoutException, WebDriverException) as e:
             print(f"Error processing element: {e}")
             return None
 
@@ -135,7 +144,7 @@ class Scrapper:
                 time.sleep(2)
                 return True
             return False
-        except Exception as e:
+        except (NoSuchElementException, TimeoutException, WebDriverException) as e:
             print(f"Error going to next page: {e}")
             return False
 
