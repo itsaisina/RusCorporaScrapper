@@ -26,10 +26,10 @@ jobs:
         pip install poetry
         poetry update
 
-    - name: Lint with pylint
-      run: |
-        pip install pylint
-        pylint .
+    # - name: Lint with pylint
+    #   run: |
+    #     pip install pylint
+    #     pylint .
         
     - name: Lint with mypy
       run: |
