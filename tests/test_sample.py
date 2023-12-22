@@ -1,5 +1,4 @@
 from driver_init import init_driver
-import selenium
 
 
 def func(x):
@@ -7,4 +6,5 @@ def func(x):
 
 
 def test_answer():
+    import selenium
     assert init_driver() != 'something'
