@@ -1,7 +1,6 @@
 import json
 import pathlib
-
-from config_loader import load_config
+from rus_corpora_scrapper.config_loader import load_config
 
 CONFIG_CONTENT = {
     "seed_url": "https://ruscorpora.ru/search",

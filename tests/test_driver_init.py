@@ -1,4 +1,4 @@
-from driver_init import init_driver
+from rus_corpora_scrapper.driver_init import init_driver
 from selenium import webdriver
 
 
