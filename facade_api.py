@@ -6,9 +6,9 @@ from typing import Optional, Any, Tuple, List, Dict
 
 from selenium.common import WebDriverException
 
-from .scrapper import Scrapper
-from .config_loader import load_config
-from .driver_init import init_driver
+from scrapper import Scrapper
+from config_loader import load_config
+from driver_init import init_driver
 
 
 class FacadeAPI:
