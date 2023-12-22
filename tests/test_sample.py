@@ -6,4 +6,5 @@ def func(x):
 
 
 def test_answer():
+    import selenium
     assert init_driver() != 'something'
