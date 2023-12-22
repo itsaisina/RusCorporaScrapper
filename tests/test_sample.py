@@ -1,4 +1,5 @@
 from driver_init import init_driver
+import selenium
 
 
 def func(x):
