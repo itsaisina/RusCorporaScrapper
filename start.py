@@ -1,3 +1,7 @@
+"""
+Main script to start the web scraping process.
+"""
+
 import json
 from facade_api import FacadeAPI
 
@@ -28,8 +32,6 @@ def main():
         print(f"File not found error: {fnf_error}")
     except json.JSONDecodeError as json_error:
         print(f"JSON decode error: {json_error}")
-    except Exception as e:
-        print(f"General error occurred: {e}")
     finally:
         if scraper:
             scraper.close()

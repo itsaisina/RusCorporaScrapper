@@ -1,3 +1,7 @@
+"""
+Module for initializing a Selenium WebDriver instance.
+"""
+
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 

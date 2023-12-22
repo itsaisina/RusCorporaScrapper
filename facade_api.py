@@ -1,4 +1,11 @@
-from typing import Optional, Dict, Any
+"""
+FacadeAPI module to provide a high-level interface for web scraping operations.
+"""
+
+from typing import Optional, Any
+
+from selenium.common import WebDriverException
+
 from scrapper import Scrapper
 from config_loader import load_config
 from driver_init import init_driver
@@ -35,7 +42,7 @@ class FacadeAPI:
             self.scrapper.navigate_to_search()
             self.scrapper.input_word(word)
             return self.scrapper.collect_data(word)
-        except Exception as e:
+        except WebDriverException as e:
             print(f"Error processing word '{word}': {e}")
             return None
 
