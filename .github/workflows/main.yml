@@ -7,6 +7,35 @@ on:
     branches: [ main ]
 
 jobs:
+  check-code-style:
+    name: Check code style
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python 3.x
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+    - name: Setup
+      run: |
+        export PYTHONPATH=$(pwd):$PYTHONPATH
+        python -m pip install --upgrade pip
+        python -m venv .venv
+        source .venv/bin/activate
+        pip install poetry
+        poetry update
+
+    - name: Lint with pylint
+      run: |
+        pip install pylint
+        pylint .
+        
+    - name: Lint with mypy
+      run: |
+        pip install mypy
+        mypy .
+  
   run-core-tests:
     name: Run core tests
     runs-on: ubuntu-latest
