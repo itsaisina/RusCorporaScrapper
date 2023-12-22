@@ -1,13 +1,13 @@
+"""
+Parser module for web elements using Selenium.
+"""
+
+from typing import Optional, Dict
 from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
-from typing import Optional, Dict
-
-"""
-Parser module for web elements using Selenium.
-"""
 
 
 class Parser:
