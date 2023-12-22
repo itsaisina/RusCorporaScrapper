@@ -43,10 +43,12 @@ class Scrapper:
             word (str): The word to search for.
         """
         try:
-            input_element = self.wait.until(EC.visibility_of_element_located((By.CLASS_NAME, "the-input__input")))
+            input_element = self.wait.until(
+                EC.visibility_of_element_located((By.CLASS_NAME, "the-input__input")))
             input_element.clear()
             input_element.send_keys(word)
-            search_button = self.driver.find_element(By.XPATH, self.config["x_paths"]["search_input"])
+            search_button = self.driver.find_element(
+                By.XPATH, self.config["x_paths"]["search_input"])
             search_button.click()
         except Exception as e:
             print(f"Error in input_word: {e}")
@@ -59,14 +61,16 @@ class Scrapper:
             word (str): The word for which to collect data.
 
         Returns:
-            Tuple[List[Dict[str, Any]], List[Dict[str, Any]]]: Collected perfective and imperfective forms data.
+            Tuple[List[Dict[str, Any]], List[Dict[str, Any]]]:
+            Collected perfective and imperfective forms data.
         """
         perfective, imperfective = [], []
         page_number = 1
         while True:
             print(f"Processing page: {page_number}")
             try:
-                hit_word_elements = self.wait.until(EC.presence_of_all_elements_located((By.CSS_SELECTOR, ".hit.word")))
+                hit_word_elements = self.wait.until(
+                    EC.presence_of_all_elements_located((By.CSS_SELECTOR, ".hit.word")))
                 for i, element in enumerate(hit_word_elements, start=1):
                     word_data = self.process_element(element, i)
                     if word_data and "глагол" in word_data['грамматика']:
@@ -124,7 +128,8 @@ class Scrapper:
             bool: True if successfully navigated to the next page, False otherwise.
         """
         try:
-            next_page_button = self.driver.find_element(By.CSS_SELECTOR, self.config["css_selectors"]["next_page"])
+            next_page_button = self.driver.find_element(
+                By.CSS_SELECTOR, self.config["css_selectors"]["next_page"])
             if next_page_button.is_enabled():
                 self.driver.execute_script("arguments[0].click();", next_page_button)
                 time.sleep(2)
