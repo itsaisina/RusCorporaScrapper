@@ -3,7 +3,7 @@ Main script to start the web scraping process.
 """
 
 import json
-from facade_api import FacadeAPI
+from .facade_api import FacadeAPI
 
 
 def main():

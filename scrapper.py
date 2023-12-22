@@ -10,7 +10,7 @@ from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
-from custom_parser import Parser
+from .custom_parser import Parser
 
 
 class Scrapper:
@@ -138,7 +138,7 @@ class Scrapper:
         """
         try:
             next_page_button = self.driver.find_element(
-                By.CSS_SELECTOR, self.config["css_selectors"]["next_page"])
+                By.CSS_SELECTOR, ".ant-pagination-next:not(.ant-pagination-disabled)")
             if next_page_button.is_enabled():
                 self.driver.execute_script("arguments[0].click();", next_page_button)
                 time.sleep(2)

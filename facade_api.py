@@ -2,13 +2,13 @@
 FacadeAPI module to provide a high-level interface for web scraping operations.
 """
 
-from typing import Optional, Any
+from typing import Optional, Any, Tuple, List, Dict
 
 from selenium.common import WebDriverException
 
-from scrapper import Scrapper
-from config_loader import load_config
-from driver_init import init_driver
+from .scrapper import Scrapper
+from .config_loader import load_config
+from .driver_init import init_driver
 
 
 class FacadeAPI:
@@ -27,7 +27,7 @@ class FacadeAPI:
         self.driver = init_driver(self.config.get("headless", True))
         self.scrapper = Scrapper(self.driver, self.config)
 
-    def process_word(self, word: str) -> Optional[tuple[list[dict[str, Any]], [dict[str, Any]]]]:
+    def process_word(self, word: str) -> Optional[Tuple[List[Dict[str, Any]], List[Dict[str, Any]]]]:
         """
         Processes a given word using the Scrapper to collect relevant data.
 
