@@ -1,9 +1,13 @@
-from typing import Optional, Dict
 from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
+from typing import Optional, Dict
+
+"""
+Parser module for web elements using Selenium.
+"""
 
 
 class Parser:
@@ -40,7 +44,7 @@ class Parser:
         try:
             return self.wait.until(EC.visibility_of_element_located(
                 (By.XPATH, context_xpath))).text
-        except Exception as e:
+        except (NoSuchElementException, TimeoutException) as e:
             print(f"Error extracting context: {e}")
             return None
 
@@ -54,7 +58,7 @@ class Parser:
         try:
             return self.wait.until(EC.visibility_of_element_located(
                 (By.XPATH, self.config["x_paths"]["lemma"]))).text
-        except Exception as e:
+        except (NoSuchElementException, TimeoutException) as e:
             print(f"Error extracting lemma: {e}")
             return None
 
@@ -68,7 +72,7 @@ class Parser:
         try:
             return self.wait.until(EC.visibility_of_element_located(
                 (By.XPATH, self.config["x_paths"]["grammar"]))).text
-        except Exception as e:
+        except (NoSuchElementException, TimeoutException) as e:
             print(f"Error extracting grammar: {e}")
             return None
 
