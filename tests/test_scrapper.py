@@ -1,6 +1,6 @@
-from rus_corpora_scrapper.scrapper import Scrapper
-from rus_corpora_scrapper.driver_init import init_driver
-from rus_corpora_scrapper.config_loader import load_config
+from ..scrapper import Scrapper
+from ..driver_init import init_driver
+from config.config_loader import load_config
 from pathlib import Path
 import time
 
