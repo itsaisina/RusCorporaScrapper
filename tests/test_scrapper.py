@@ -1,8 +1,14 @@
+"""
+Tests for scrapper abstraction
+"""
+
+import time
+from pathlib import Path
+
 from scrapper import Scrapper
 from driver_init import init_driver
 from config.config_loader import load_config
-from pathlib import Path
-import time
+
 
 CONFIG_PATH = Path(__file__).parent.parent / 'scrapper_config.json'
 DRIVER = init_driver()
