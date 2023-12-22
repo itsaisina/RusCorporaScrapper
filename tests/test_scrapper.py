@@ -1,5 +1,5 @@
-from ..scrapper import Scrapper
-from ..driver_init import init_driver
+from scrapper import Scrapper
+from driver_init import init_driver
 from config.config_loader import load_config
 from pathlib import Path
 import time
@@ -23,12 +23,12 @@ def test_navigate_to_search_return_type():
 
 
 def test_input_word_type():
-    res = SCRAPPER.input_word('word')
+    res = SCRAPPER.input_word('азотировать')
     assert res is None
 
 
 def test_collect_data_type():
-    res = SCRAPPER.collect_data('word')
+    res = SCRAPPER.collect_data('азотировать')
     assert isinstance(res[0], list)
     assert isinstance(res[1], list)
 
@@ -46,5 +46,3 @@ def test_close_driver():
     res = SCRAPPER.close_driver()
     assert res is None
     assert SCRAPPER.driver.service.is_connectable() is False
-
-
