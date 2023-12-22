@@ -1,3 +1,7 @@
+"""
+Module for loading configuration from a JSON file.
+"""
+
 import json
 from typing import Any, Dict
 
@@ -12,5 +16,5 @@ def load_config(path: str) -> Dict[str, Any]:
     Returns:
         Dict[str, Any]: A dictionary containing the parsed JSON data.
     """
-    with open(path, 'r') as file:
+    with open(path, 'r', encoding='utf-8') as file:
         return json.load(file)

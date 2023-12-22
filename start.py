@@ -7,6 +7,7 @@ def main():
     Main function to initiate the web scraping process for words listed in 'biverbal_verbs.txt'.
     Scraped data for each word will be saved in separate JSON files.
     """
+    scraper = None
     try:
         scraper = FacadeAPI(config_path='scrapper_config.json')
 
@@ -30,7 +31,8 @@ def main():
     except Exception as e:
         print(f"General error occurred: {e}")
     finally:
-        scraper.close()
+        if scraper:
+            scraper.close()
 
 
 if __name__ == "__main__":

@@ -1,5 +1,11 @@
+"""
+Module for web scraping using Selenium WebDriver.
+"""
+
 import time
 from typing import Tuple, List, Optional, Dict, Any
+
+from selenium.common import NoSuchElementException, TimeoutException, WebDriverException
 from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -32,8 +38,11 @@ class Scrapper:
         """
         Navigates to the initial search URL as defined in the configuration.
         """
-        self.driver.get(self.config["seed_url"])
-        time.sleep(2)  # sleep to ensure the page has loaded
+        try:
+            self.driver.get(self.config["seed_url"])
+            time.sleep(2)  # sleep to ensure the page has loaded
+        except WebDriverException as e:
+            print(f"Error navigating to search page: {e}")
 
     def input_word(self, word: str):
         """
@@ -43,12 +52,14 @@ class Scrapper:
             word (str): The word to search for.
         """
         try:
-            input_element = self.wait.until(EC.visibility_of_element_located((By.CLASS_NAME, "the-input__input")))
+            input_element = self.wait.until(
+                EC.visibility_of_element_located((By.CLASS_NAME, "the-input__input")))
             input_element.clear()
             input_element.send_keys(word)
-            search_button = self.driver.find_element(By.XPATH, self.config["x_paths"]["search_input"])
+            search_button = self.driver.find_element(
+                By.XPATH, self.config["x_paths"]["search_input"])
             search_button.click()
-        except Exception as e:
+        except (NoSuchElementException, TimeoutException, WebDriverException) as e:
             print(f"Error in input_word: {e}")
 
     def collect_data(self, word: str) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]]]:
@@ -59,14 +70,16 @@ class Scrapper:
             word (str): The word for which to collect data.
 
         Returns:
-            Tuple[List[Dict[str, Any]], List[Dict[str, Any]]]: Collected perfective and imperfective forms data.
+            Tuple[List[Dict[str, Any]], List[Dict[str, Any]]]:
+            Collected perfective and imperfective forms data.
         """
         perfective, imperfective = [], []
         page_number = 1
         while True:
             print(f"Processing page: {page_number}")
             try:
-                hit_word_elements = self.wait.until(EC.presence_of_all_elements_located((By.CSS_SELECTOR, ".hit.word")))
+                hit_word_elements = self.wait.until(
+                    EC.presence_of_all_elements_located((By.CSS_SELECTOR, ".hit.word")))
                 for i, element in enumerate(hit_word_elements, start=1):
                     word_data = self.process_element(element, i)
                     if word_data and "глагол" in word_data['грамматика']:
@@ -77,7 +90,7 @@ class Scrapper:
                 if not self.go_to_next_page():
                     break
                 page_number += 1
-            except Exception as e:
+            except (NoSuchElementException, TimeoutException, WebDriverException) as e:
                 print(f"Error on page {page_number} for '{word}': {e}")
                 break
         return perfective, imperfective
@@ -112,7 +125,7 @@ class Scrapper:
                 'грамматика': grammar,
                 'синтаксические признаки': syntax_features
             }
-        except Exception as e:
+        except (NoSuchElementException, TimeoutException, WebDriverException) as e:
             print(f"Error processing element: {e}")
             return None
 
@@ -124,13 +137,14 @@ class Scrapper:
             bool: True if successfully navigated to the next page, False otherwise.
         """
         try:
-            next_page_button = self.driver.find_element(By.CSS_SELECTOR, self.config["css_selectors"]["next_page"])
+            next_page_button = self.driver.find_element(
+                By.CSS_SELECTOR, self.config["css_selectors"]["next_page"])
             if next_page_button.is_enabled():
                 self.driver.execute_script("arguments[0].click();", next_page_button)
                 time.sleep(2)
                 return True
             return False
-        except Exception as e:
+        except (NoSuchElementException, TimeoutException, WebDriverException) as e:
             print(f"Error going to next page: {e}")
             return False
 

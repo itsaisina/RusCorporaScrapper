@@ -1,5 +1,9 @@
-from selenium.webdriver.chrome.webdriver import WebDriver
+"""
+Parser module for web elements using Selenium.
+"""
+
 from typing import Optional, Dict
+from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
@@ -33,11 +37,14 @@ class Parser:
         Returns:
             Optional[str]: The extracted context text or None if extraction fails.
         """
-        context_xpath = \
-            f"(//span[@class='hit word'])[position()={position}]/ancestor::p[contains(@class, 'seq-with-actions')]"
+        context_xpath = (
+            f"(//span[@class='hit word'])[position()={position}]"
+            "/ancestor::p[contains(@class, 'seq-with-actions')]"
+        )
         try:
-            return self.wait.until(EC.visibility_of_element_located((By.XPATH, context_xpath))).text
-        except Exception as e:
+            return self.wait.until(EC.visibility_of_element_located(
+                (By.XPATH, context_xpath))).text
+        except (NoSuchElementException, TimeoutException) as e:
             print(f"Error extracting context: {e}")
             return None
 
@@ -49,8 +56,9 @@ class Parser:
             Optional[str]: The extracted lemma text or None if extraction fails.
         """
         try:
-            return self.wait.until(EC.visibility_of_element_located((By.XPATH, self.config["x_paths"]["lemma"]))).text
-        except Exception as e:
+            return self.wait.until(EC.visibility_of_element_located(
+                (By.XPATH, self.config["x_paths"]["lemma"]))).text
+        except (NoSuchElementException, TimeoutException) as e:
             print(f"Error extracting lemma: {e}")
             return None
 
@@ -62,8 +70,9 @@ class Parser:
             Optional[str]: The extracted grammar information or None if extraction fails.
         """
         try:
-            return self.wait.until(EC.visibility_of_element_located((By.XPATH, self.config["x_paths"]["grammar"]))).text
-        except Exception as e:
+            return self.wait.until(EC.visibility_of_element_located(
+                (By.XPATH, self.config["x_paths"]["grammar"]))).text
+        except (NoSuchElementException, TimeoutException) as e:
             print(f"Error extracting grammar: {e}")
             return None
 
