@@ -5,7 +5,7 @@ import json
 import pathlib
 from config.config_loader import load_config
 
-TEST_CONFIG_CONTENT = {"seed_url": "url", "x_paths": ({
+TEST_CONFIG_CONTENT = {"seed_url": "url", "x_paths": [{
                                                           "search_input": "input",
                                                           "word_elements": "element",
                                                           "lemma": "lemma path",
@@ -17,7 +17,7 @@ TEST_CONFIG_CONTENT = {"seed_url": "url", "x_paths": ({
                                                               ],
                                                           "modal_close": "close",
                                                           "next_page_button": "button"
-                                                      },), 'timeout': 15}
+                                                      },], 'timeout': 15}
 
 FILE_PATH = pathlib.Path('test.json')
 
@@ -28,7 +28,7 @@ def test_config_loader():
     Returns:
 
     """
-    with open(FILE_PATH, 'w') as f:
+    with open(FILE_PATH, 'w', encoding='utf-8') as f:
         json.dump(TEST_CONFIG_CONTENT, f)
     assert load_config(str(FILE_PATH)) == TEST_CONFIG_CONTENT
     pathlib.Path.unlink(FILE_PATH)
