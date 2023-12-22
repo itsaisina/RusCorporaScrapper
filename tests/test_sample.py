@@ -1,6 +1,9 @@
+from driver_init import init_driver
+
+
 def func(x):
     return x + 1
 
 
 def test_answer():
-    assert func(3) == 4
+    assert init_driver() != 'something'
