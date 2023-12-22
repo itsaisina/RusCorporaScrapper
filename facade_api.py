@@ -27,7 +27,8 @@ class FacadeAPI:
         self.driver = init_driver(self.config.get("headless", True))
         self.scrapper = Scrapper(self.driver, self.config)
 
-    def process_word(self, word: str) -> Optional[Tuple[List[Dict[str, Any]], List[Dict[str, Any]]]]:
+    def process_word(self, word: str) -> (
+            Optional)[Tuple[List[Dict[str, Any]], List[Dict[str, Any]]]]:
         """
         Processes a given word using the Scrapper to collect relevant data.
 
