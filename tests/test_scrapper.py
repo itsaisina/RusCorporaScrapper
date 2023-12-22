@@ -35,8 +35,7 @@ def test_navigate_to_search_return_type():
     Returns:
 
     """
-    res = SCRAPPER.navigate_to_search()
-    assert res is None
+    assert SCRAPPER.navigate_to_search() is None
 
 
 def test_input_word_type():
@@ -45,8 +44,7 @@ def test_input_word_type():
     Returns:
 
     """
-    res = SCRAPPER.input_word('азотировать')
-    assert res is None
+    assert SCRAPPER.input_word('азотировать') is None
 
 
 def test_collect_data_type():
@@ -83,6 +81,5 @@ def test_close_driver():
     Returns:
 
     """
-    res = SCRAPPER.close_driver()
-    assert res is None
+    assert SCRAPPER.close_driver() is None
     assert SCRAPPER.driver.service.is_connectable() is False
