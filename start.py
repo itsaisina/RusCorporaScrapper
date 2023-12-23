@@ -13,7 +13,7 @@ def main():
     """
     scraper = None
     try:
-        scraper = FacadeAPI(config_path='scrapper_config.json')
+        scraper = FacadeAPI(config_path='config/scrapper_config.json')
 
         with open('biverbal_verbs.txt', 'r', encoding='utf-8') as file:
             words = [word.strip() for word in file.readlines()]
