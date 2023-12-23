@@ -2,9 +2,9 @@
 Tests for scrapper_config content correctness
 """
 import json
-import pathlib
+from pathlib import Path
 
-CONFIG_PATH = pathlib.Path(__file__).parent.parent / 'scrapper_config.json'
+CONFIG_PATH = Path(__file__).parent.parent / 'config' / 'scrapper_config.json'
 
 
 def test_config_completeness():
