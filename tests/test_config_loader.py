@@ -29,5 +29,5 @@ def test_config_loader():
     """
     with open(FILE_PATH, 'w', encoding='utf-8') as f:
         json.dump(TEST_CONFIG_CONTENT, f)
-    assert load_config(str(FILE_PATH)) == TEST_CONFIG_CONTENT
+    assert load_config(FILE_PATH) == TEST_CONFIG_CONTENT
     pathlib.Path.unlink(FILE_PATH)

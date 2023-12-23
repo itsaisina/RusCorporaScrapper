@@ -12,7 +12,7 @@ from config.config_loader import load_config
 
 CONFIG_PATH = Path(__file__).parent.parent / 'scrapper_config.json'
 DRIVER = init_driver()
-CONFIG = load_config(str(CONFIG_PATH))
+CONFIG = load_config(CONFIG_PATH)
 SCRAPPER = Scrapper(DRIVER, CONFIG)
 
 

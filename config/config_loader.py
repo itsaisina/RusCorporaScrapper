@@ -4,9 +4,10 @@ Module for loading configuration from a JSON file.
 
 import json
 from typing import Any, Dict
+from pathlib import Path
 
 
-def load_config(path: str) -> Dict[str, Any]:
+def load_config(path: Path) -> Dict[str, Any]:
     """
     Load a configuration from a JSON file.
 

@@ -3,6 +3,7 @@ FacadeAPI module to provide a high-level interface for web scraping operations.
 """
 
 from typing import Optional, Any, Tuple, List, Dict
+from pathlib import Path
 
 from selenium.common import WebDriverException
 
@@ -10,13 +11,15 @@ from scrapper import Scrapper
 from config.config_loader import load_config
 from driver_init import init_driver
 
+CONFIG_PATH = Path(__file__).parent.parent / 'scrapper_config.json'
+
 
 class FacadeAPI:
     """
     FacadeAPI serves as a high-level interface to interact with the Scrapper class.
     """
 
-    def __init__(self, config_path: str = 'scrapper_config.json'):
+    def __init__(self, config_path: Path = CONFIG_PATH):
         """
         Initialize the FacadeAPI with configurations and a Scrapper instance.
 
