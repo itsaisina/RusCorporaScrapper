@@ -126,7 +126,7 @@ class TestParser(unittest.TestCase):
         self.assertIsNone(syntax_features)
         self.parser.config["x_paths"]["syntax_features_option"] = original_xpath
 
-    def setDown(self):
+    def set_down(self):
         """
         Clean up the web page after each test by closing any open modal or pop-up.
         """
