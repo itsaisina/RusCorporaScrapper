@@ -74,4 +74,3 @@ def test_time_out():
         content = json.load(f)
     assert content['timeout'] < 60
     assert content['timeout'] > 0
-
