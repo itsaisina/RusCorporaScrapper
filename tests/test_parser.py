@@ -140,6 +140,14 @@ class TestParser(unittest.TestCase):
         """
         self.driver.get('https://ruscorpora.ru/search')
         context = self.parser.extract_context(1)
+        self.driver.get(
+            'https://ruscorpora.ru/results?search=CtgBErQBCrEBChMKCWRpc2'
+            'FtYm1vZBIGCgRtYWluChcKB2Rpc3Rtb2QSDAoKd2l0aF96ZXJvcxKAAQorC'
+            'gNsZXgSJAoi0LDQutGB0LjQvtC80LDRgtC40LfQuNGA0L7QstCw0YLRjAoKC'
+            'gRmb3JtEgIKAAoLCgVncmFtbRICCgAKCQoDc2VtEgIKAAoVCgdzZW0tbW9kE'
+            'goKCHNlbXpzZW14CgkKA3N5bhICCgAKCwoFZmxhZ3MSAgoAKhgKCAgAEAoYM'
+            'iAKEAUgAEAFagQwLjk1eAAyAggBOgEBMAE='
+        )
         self.assertIsNone(context)
 
     def test_extract_lemma_no_element(self):
@@ -148,6 +156,14 @@ class TestParser(unittest.TestCase):
         """
         self.driver.get('https://ruscorpora.ru/search')
         lemma = self.parser.extract_lemma()
+        self.driver.get(
+            'https://ruscorpora.ru/results?search=CtgBErQBCrEBChMKCWRpc2'
+            'FtYm1vZBIGCgRtYWluChcKB2Rpc3Rtb2QSDAoKd2l0aF96ZXJvcxKAAQorC'
+            'gNsZXgSJAoi0LDQutGB0LjQvtC80LDRgtC40LfQuNGA0L7QstCw0YLRjAoKC'
+            'gRmb3JtEgIKAAoLCgVncmFtbRICCgAKCQoDc2VtEgIKAAoVCgdzZW0tbW9kE'
+            'goKCHNlbXpzZW14CgkKA3N5bhICCgAKCwoFZmxhZ3MSAgoAKhgKCAgAEAoYM'
+            'iAKEAUgAEAFagQwLjk1eAAyAggBOgEBMAE='
+        )
         self.assertIsNone(lemma)
 
     def test_extract_grammar_no_element(self):
@@ -156,6 +172,14 @@ class TestParser(unittest.TestCase):
         """
         self.driver.get('https://ruscorpora.ru/search')
         grammar = self.parser.extract_grammar()
+        self.driver.get(
+            'https://ruscorpora.ru/results?search=CtgBErQBCrEBChMKCWRpc2'
+            'FtYm1vZBIGCgRtYWluChcKB2Rpc3Rtb2QSDAoKd2l0aF96ZXJvcxKAAQorC'
+            'gNsZXgSJAoi0LDQutGB0LjQvtC80LDRgtC40LfQuNGA0L7QstCw0YLRjAoKC'
+            'gRmb3JtEgIKAAoLCgVncmFtbRICCgAKCQoDc2VtEgIKAAoVCgdzZW0tbW9kE'
+            'goKCHNlbXpzZW14CgkKA3N5bhICCgAKCwoFZmxhZ3MSAgoAKhgKCAgAEAoYM'
+            'iAKEAUgAEAFagQwLjk1eAAyAggBOgEBMAE='
+        )
         self.assertIsNone(grammar)
 
     def test_extract_syntax_features_no_element(self):
@@ -164,6 +188,14 @@ class TestParser(unittest.TestCase):
         """
         self.driver.get('https://ruscorpora.ru/search')
         syntax_features = self.parser.extract_syntax_features()
+        self.driver.get(
+            'https://ruscorpora.ru/results?search=CtgBErQBCrEBChMKCWRpc2'
+            'FtYm1vZBIGCgRtYWluChcKB2Rpc3Rtb2QSDAoKd2l0aF96ZXJvcxKAAQorC'
+            'gNsZXgSJAoi0LDQutGB0LjQvtC80LDRgtC40LfQuNGA0L7QstCw0YLRjAoKC'
+            'gRmb3JtEgIKAAoLCgVncmFtbRICCgAKCQoDc2VtEgIKAAoVCgdzZW0tbW9kE'
+            'goKCHNlbXpzZW14CgkKA3N5bhICCgAKCwoFZmxhZ3MSAgoAKhgKCAgAEAoYM'
+            'iAKEAUgAEAFagQwLjk1eAAyAggBOgEBMAE='
+        )
         self.assertIsNone(syntax_features)
 
     @classmethod
