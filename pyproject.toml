@@ -1,8 +1,8 @@
 [tool.poetry]
-name = "ABC"
+name = "RusCorporaVerbScraper"
 version = "0.1.0"
-description = "Проект для веб-скрапинга RusCorpora"
-authors = ["..."]
+description = "Проект для веб-скрапинга RusCorpora с фокусом на двувидовые глаголы"
+authors = ["Матвеев Максим, Айсина Алина, Шкунов Павел"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
