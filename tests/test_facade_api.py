@@ -7,7 +7,7 @@ from config.config_loader import load_config
 from scrapper import Scrapper
 from facade_api import FacadeAPI
 
-CONFIG_PATH = Path(__file__).parent.parent / 'scrapper_config.json'
+CONFIG_PATH = Path(__file__).parent.parent / 'config' / 'scrapper_config.json'
 CONFIG = load_config(CONFIG_PATH)
 API = FacadeAPI(CONFIG_PATH)
 

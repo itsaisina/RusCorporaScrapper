@@ -10,7 +10,7 @@ from driver_init import init_driver
 from config.config_loader import load_config
 
 
-CONFIG_PATH = Path(__file__).parent.parent / 'scrapper_config.json'
+CONFIG_PATH = Path(__file__).parent.parent / 'config' / 'scrapper_config.json'
 DRIVER = init_driver()
 CONFIG = load_config(CONFIG_PATH)
 SCRAPPER = Scrapper(DRIVER, CONFIG)
