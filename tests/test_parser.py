@@ -30,7 +30,7 @@ class TestParser(unittest.TestCase):
         config_path = current_dir / "../config/scrapper_config.json"
         cls.config = load_config(config_path.resolve())
         cls.driver = init_driver(cls.config.get("headless", True))
-        cls.wait = WebDriverWait(cls.driver, cls.config.get("timeout", 15))
+        cls.wait = WebDriverWait(cls.driver, cls.config.get("timeout", 10))
         cls.driver.get(
             'https://ruscorpora.ru/results?search=CtgBErQBCrEBChMKCWRpc2'
             'FtYm1vZBIGCgRtYWluChcKB2Rpc3Rtb2QSDAoKd2l0aF96ZXJvcxKAAQorC'
