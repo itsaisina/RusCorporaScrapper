@@ -11,8 +11,10 @@ from facade_api import FacadeAPI
 
 def main():
     """
-    Main function to initiate the web scraping process for words listed in 'biverbal_verbs.txt'.
-    Scraped data for each word will be saved in separate JSON files in the 'biverbal_verbs' directory.
+    Main function to initiate the web scraping process for words listed
+    in 'biverbal_verbs.txt'.
+    Scraped data for each word will be saved in separate JSON files
+    in the 'biverbal_verbs' directory.
     """
     scraper = None
     output_dir = 'biverbal_verbs'
@@ -31,10 +33,12 @@ def main():
             print(f"Processing word: {word}")
             perfective_data, imperfective_data = scraper.process_word(word)
 
-            with open(os.path.join(output_dir, f'perfective_{word}.json'), 'w', encoding='utf-8') as f:
+            with open(os.path.join(
+                    output_dir, f'perfective_{word}.json'), 'w', encoding='utf-8') as f:
                 json.dump(perfective_data, f, ensure_ascii=False, indent=4)
 
-            with open(os.path.join(output_dir, f'imperfective_{word}.json'), 'w', encoding='utf-8') as f:
+            with open(os.path.join(
+                    output_dir, f'imperfective_{word}.json'), 'w', encoding='utf-8') as f:
                 json.dump(imperfective_data, f, ensure_ascii=False, indent=4)
 
     except FileNotFoundError as fnf_error:
