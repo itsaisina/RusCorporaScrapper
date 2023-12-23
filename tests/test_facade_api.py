@@ -1,3 +1,6 @@
+"""
+Tests for FacadeAPI abstraction
+"""
 from pathlib import Path
 from selenium.webdriver.chrome.webdriver import WebDriver
 from config.config_loader import load_config
